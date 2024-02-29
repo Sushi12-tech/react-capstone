@@ -1,14 +1,23 @@
 
-
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
-
+import Register from '../pages/Register'
+import Movies from '../pages/Movies'
+import Display from '../pages/Display'
+import Browse from '../pages/Browse'
 function App() {
  
 
   return (
     <>
-      HELLO!!
-      
+     <BrowserRouter>
+     <Routes>
+      <Route path='/' element={<Register/>} />
+      <Route path='/movies' element={<Movies/>} />
+      <Route path='/display' element={<Display/>} />
+      <Route path='/browse' element={<Browse/>} />
+     </Routes>
+     </BrowserRouter>
     </>
   )
 }
