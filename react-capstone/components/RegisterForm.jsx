@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import { useState } from "react";
 const RegisterForm = () => {
   const navigate = useNavigate();
-  const [formValues, setformValues] = useState({
+  const [formValues, setFormValues] = useState({
     name: "",
     username: "",
     email: "",
@@ -18,9 +18,7 @@ const RegisterForm = () => {
     checkbox: null,
   });
 
-  const handleChange = (e) => {
-    setformValues({ ...formValues, [e.target.name]: e.target.value });
-  };
+  
 
   const handleSignUp = () => {
     let isErrors = false;
@@ -90,10 +88,14 @@ const RegisterForm = () => {
         ...prev, checkbox: null
       }))
     }
-    if(!isErrors)
-    navigate("/movies");
+    if (!isErrors) {
+      localStorage.setItem("userInfo", JSON.stringify(formValues));
+      navigate("/movies");
+    }
   };
-
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
   return (
     <>
       <div
